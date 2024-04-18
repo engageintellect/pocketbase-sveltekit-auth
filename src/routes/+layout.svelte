@@ -1,49 +1,132 @@
 <script lang="ts">
-  import '../app.postcss'
-
+  import '../app.pcss'
   import { applyAction, enhance } from '$app/forms'
   import { pb } from '$lib/pocketbase'
   import { currentUser } from '$lib/stores/user'
   import type { PageData } from './$types'
+  import daisyuiColors from 'daisyui/src/theming/themes'
+  import { selectedTheme } from '$lib/stores/theme'
+  import { onMount } from 'svelte'
+  import Icon from '@iconify/svelte'
 
   export let data: PageData
 
+  let themes = Object.keys(daisyuiColors)
+
   // Set the current user from the data passed in from the server
   $: currentUser.set(data.user)
+
+  onMount(() => {
+    const storedTheme = localStorage.getItem('selectedTheme')
+    if (storedTheme && themes.includes(storedTheme)) {
+      selectedTheme.set(storedTheme)
+      document.documentElement.setAttribute('data-theme', storedTheme)
+    }
+  })
+
+  function handleThemeChange(event: any) {
+    const theme = event.target.value
+    selectedTheme.set(theme)
+    localStorage.setItem('selectedTheme', theme)
+  }
 </script>
 
-<div class="bg-neutral text-neutral-content">
-  <div class="max-w-xl mx-auto navbar">
-    <div class="navbar-start">
-      <a href="/" class="btn btn-ghost text-xl">PB + SK</a>
+<div class="bg-base-100 text-neutral-content">
+  <div class="navbar max-w-xl mx-auto text-base-content">
+    <div class="flex-1">
+      <a href="/" class="btn btn-primary text-xl">PB + SK</a>
     </div>
-    <div class="navbar-end">
-      <ul class="menu menu-horizontal">
-        {#if $currentUser}
-          <li><a href="/">{$currentUser.email}</a></li>
-          <li>
-            <form
-              method="POST"
-              action="/logout"
-              use:enhance={() => {
-                return async ({ result }) => {
-                  pb.authStore.clear()
-                  await applyAction(result)
-                }
-              }}
+    <div class="flex-none gap-2">
+      <!-- <div class="form-control">
+        <input
+          type="text"
+          placeholder="Search"
+          class="input input-bordered w-24 md:w-auto"
+        />
+      </div> -->
+
+      {#if $currentUser}
+        <div class="">
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button">
+              <div class="lg:tooltip lg:tooltip-left" data-tip="Theme Selector">
+                <button class="btn btn-ghost">
+                  <div class="font-normal lowercase">
+                    <Icon icon="gridicons-themes" class="h-6 w-6" />
+                  </div>
+                </button>
+              </div>
+            </div>
+            <ul
+              tabindex="-1"
+              class="dropdown-content dropdown-end rounded-box border-primary bg-base-100 -z-[-1] mt-3 h-96 w-52 overflow-auto border p-2 shadow"
             >
-              <button>Log out</button>
-            </form>
-          </li>
-        {:else}
-          <li><a href="/login">Log in</a></li>
-          <li><a href="/register">Register</a></li>
-        {/if}
-      </ul>
+              {#each themes.sort() as theme}
+                <li>
+                  <input
+                    type="radio"
+                    name="theme-dropdown"
+                    class="theme-controller text-base-content btn btn-ghost btn-sm btn-block justify-start font-medium"
+                    aria-label={theme}
+                    value={theme}
+                    on:change={handleThemeChange}
+                  />
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </div>
+
+        <div class="dropdown dropdown-end text-base-content">
+          <div
+            tabindex="0"
+            role="button"
+            class="btn btn-ghost btn-circle avatar flex items-center"
+          >
+            <div class="w-10 rounded-full">
+              <img
+                alt="Tailwind CSS Navbar component"
+                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+              />
+            </div>
+          </div>
+          <ul
+            class="mt-3 z-[1] p-2 shadow menu menu-sm border border-primary dropdown-content bg-base-100 rounded-box w-52"
+          >
+            <li><a class="font-bold" href="/">{$currentUser.email}</a></li>
+            <li>
+              <a href="/" class="justify-between">
+                Profile
+                <span class="badge">New</span>
+              </a>
+            </li>
+            <li><a href="/">Settings</a></li>
+            <li>
+              <form
+                method="POST"
+                action="/logout"
+                use:enhance={() => {
+                  return async ({ result }) => {
+                    pb.authStore.clear()
+                    await applyAction(result)
+                  }
+                }}
+              >
+                <button>Log out</button>
+              </form>
+            </li>
+          </ul>
+        </div>
+      {:else}
+        <div class="flex items-center text-sm">
+          <div><a href="/login" class="btn btn-ghost">Log in</a></div>
+          <div><a href="/register" class="btn btn-ghost">Register</a></div>
+        </div>
+      {/if}
     </div>
   </div>
 </div>
 
-<div class="max-w-xl mx-auto py-8 px-4">
+<div class="max-w-xl mx-auto p-6">
   <slot />
 </div>
