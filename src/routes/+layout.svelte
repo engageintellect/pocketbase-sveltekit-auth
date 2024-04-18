@@ -8,6 +8,7 @@
   import { selectedTheme } from '$lib/stores/theme'
   import { onMount } from 'svelte'
   import Icon from '@iconify/svelte'
+  import { getImageURL } from '$lib/utils'
 
   export let data: PageData
 
@@ -81,13 +82,26 @@
           <div
             tabindex="0"
             role="button"
-            class="btn btn-ghost btn-circle avatar flex items-center"
+            class="btn btn-primary btn-circle avatar flex items-center"
           >
-            <div class="w-10 rounded-full">
-              <img
-                alt="Tailwind CSS Navbar component"
-                src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-              />
+            <div class="w-12 rounded-full">
+              {#if $currentUser?.avatar}
+                <img
+                  src={$currentUser?.avatar
+                    ? getImageURL(
+                        $currentUser?.collectionId,
+                        $currentUser?.id,
+                        $currentUser?.avatar,
+                      )
+                    : `https://ui-avatars.com/api/?name=${$currentUser?.email}`}
+                  alt="User avatar"
+                />
+              {:else}
+                <img
+                  alt="Tailwind CSS Navbar component"
+                  src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                />
+              {/if}
             </div>
           </div>
           <ul
@@ -95,12 +109,13 @@
           >
             <li><a class="font-bold" href="/">{$currentUser.email}</a></li>
             <li>
-              <a href="/" class="justify-between">
+              <a href="/my/settings/profile" class="justify-between">
                 Profile
-                <span class="badge">New</span>
+                <span class="badge badge-info">New</span>
               </a>
             </li>
-            <li><a href="/">Settings</a></li>
+            <li><a href="/my/settings/account">Account</a></li>
+            <li><a href="/my/settings/security">Settings</a></li>
             <li>
               <form
                 method="POST"
