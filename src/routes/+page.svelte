@@ -5,7 +5,7 @@
 </script>
 
 <div class="">
-  {#if !$currentUser}
+  {#if $currentUser}
     <div class="hero bg-base-100">
       <div class="hero-content text-center">
         <div class="max-w-sm">
@@ -34,24 +34,35 @@
         <div class="bg-base-300 px-2 py-1 w-full card">
           <div class="flex items-center gap-1">
             <Icon icon="mdi-search" class="w-5 h-5" />
-
-            engage-spatz.vercel.app
+            spatz.engage-dev.com
           </div>
         </div>
       </div>
-      <div
-        class="flex overflow-auto justify-center items-center border-t border-base-300 bg-primary"
-      >
-        <Icon icon="teenyicons-svelte-solid" class="w-52 h-52 text-base-100" />
-        <Icon icon="simple-icons:pocketbase" class="w-52 h-52 text-base-100" />
-        <Icon icon="simple-icons:openai" class="w-52 h-52 text-base-100" />
-        <Icon icon="simple-icons:tailwindcss" class="w-52 h-52 text-base-100" />
-        <Icon icon="simple-icons:zod" class="w-52 h-52 text-base-100" />
-        <!-- <img -->
-        <!-- src={spatzImg} -->
-        <!-- alt="avatar" -->
-        <!-- class="w-full object-cover h-72 drop-shadow-lg" -->
-        <!-- /> -->
+
+      <div class="overflow-auto">
+        <div
+          class="flex overflow-auto justify-center items-center border-t border-base-300 bg-primary px-4 gap-2"
+        >
+          <Icon
+            icon="teenyicons-svelte-solid"
+            class="w-52 h-52 text-base-300"
+          />
+          <Icon
+            icon="simple-icons:pocketbase"
+            class="w-52 h-52 text-base-300"
+          />
+          <Icon icon="simple-icons:openai" class="w-52 h-52 text-base-300" />
+          <Icon
+            icon="simple-icons:tailwindcss"
+            class="w-52 h-52 text-base-300"
+          />
+          <Icon icon="simple-icons:zod" class="w-52 h-52 text-base-300" />
+          <!-- <img -->
+          <!-- src={spatzImg} -->
+          <!-- alt="avatar" -->
+          <!-- class="w-full object-cover h-72 drop-shadow-lg" -->
+          <!-- /> -->
+        </div>
       </div>
     </div>
   {:else}
