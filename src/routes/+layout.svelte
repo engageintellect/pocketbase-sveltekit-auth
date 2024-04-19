@@ -108,12 +108,12 @@
             class="mt-3 -z-[-1] p-2 shadow menu menu-sm border border-primary dropdown-content bg-base-100 rounded-box w-52"
           >
             <li><a class="font-bold" href="/">{$currentUser.email}</a></li>
-            <li>
-              <a href="/my/settings/profile" class="justify-between">
+            <a href="/my/settings/profile" class="justify-between">
+              <li>
                 Profile
                 <span class="badge badge-info">New</span>
-              </a>
-            </li>
+              </li>
+            </a>
             <li><a href="/my/settings/account">Account</a></li>
             <li><a href="/my/settings/security">Settings</a></li>
             <form
