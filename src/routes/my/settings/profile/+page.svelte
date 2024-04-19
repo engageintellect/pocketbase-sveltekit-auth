@@ -1,8 +1,6 @@
 <script lang="ts">
   import { invalidateAll } from '$app/navigation'
-
   import { enhance, applyAction } from '$app/forms'
-  // import { Icon, Pencil } from 'svelte-hero-icons';
   import Input from '$lib/components/Input.svelte'
   import { getImageURL } from '$lib/utils'
   import Icon from '@iconify/svelte'
@@ -68,17 +66,24 @@
           </span>
         </label>
         <div class="w-32 rounded-full border border-primary">
-          <img
-            src={data.user?.avatar
-              ? getImageURL(
-                  data.user?.collectionId,
-                  data.user?.id,
-                  data.user?.avatar,
-                )
-              : `https://ui-avatars.com/api/?name=${data.user?.name}`}
-            alt="user avatar"
-            id="avatar-preview"
-          />
+          {#if data.user?.avatar}
+            <img
+              src={data.user?.avatar
+                ? getImageURL(
+                    data.user?.collectionId,
+                    data.user?.id,
+                    data.user?.avatar,
+                  )
+                : `https://ui-avatars.com/api/?name=${data.user?.name}`}
+              alt="user avatar"
+              id="avatar-preview"
+            />
+          {:else}
+            <img
+              alt="Tailwind CSS Navbar component"
+              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            />
+          {/if}
         </div>
       </label>
       <input

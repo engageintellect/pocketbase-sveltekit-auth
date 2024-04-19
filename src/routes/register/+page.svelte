@@ -1,38 +1,58 @@
 <script lang="ts">
-  import { applyAction, enhance } from '$app/forms'
-  import { pb } from '$lib/pocketbase'
+  import { enhance } from '$app/forms'
+  import Input from '$lib/components/Input.svelte'
+  export let form
+  let loading = false
+  import { fade } from 'svelte/transition'
 </script>
 
 <form
+  action="?/register"
   method="POST"
-  class="card"
-  use:enhance={() => {
-    return async ({ result }) => {
-      pb.authStore.loadFromCookie(document.cookie)
-      await applyAction(result)
-    }
-  }}
+  class="card sm:max-w-md sm:mt-10 mx-auto"
 >
-  <h1 class="text-2xl mb-8">Register</h1>
-  <div class="form-control gap-2 mb-4">
-    <input
+  <div class="mb-5">
+    <h1 class="text-7xl">register</h1>
+    <p class=" pt-2">
+      Or <a href="/login" class="underline text-primary">login</a> if you have an
+      account.
+    </p>
+  </div>
+  <div class="form-control gap-0 mb-4">
+    <Input
       type="email"
-      name="email"
-      placeholder="Email"
-      class="input input-bordered"
+      id="email"
+      value={form?.data?.email ?? ''}
+      errors={form?.errors?.email}
+      placeholder={'Email'}
     />
-    <input
+    <Input
       type="password"
-      name="password"
-      placeholder="Password"
-      class="input input-bordered"
+      id="password"
+      value={form?.data?.password ?? ''}
+      errors={form?.errors?.password}
+      disabled={loading}
+      placeholder={'Password'}
     />
-    <input
+
+    <Input
       type="password"
-      name="passwordConfirm"
-      placeholder="Confirm password"
-      class="input input-bordered"
+      id="passwordConfirm"
+      value={form?.data?.password ?? ''}
+      errors={form?.errors?.password}
+      disabled={loading}
+      placeholder={'Confirm Password'}
     />
-    <button class="btn btn-primary">Register</button>
+
+    <div class="w-full max-w-lg">
+      <a
+        href="/reset-password"
+        class="font-medium text-primary hover:cursor-pointer hover:underline"
+      >
+        Forgot Password?</a
+      >
+    </div>
+
+    <button disabled={loading} class="btn btn-primary">Register</button>
   </div>
 </form>

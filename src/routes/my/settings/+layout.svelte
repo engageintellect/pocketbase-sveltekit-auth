@@ -17,11 +17,11 @@
 </script>
 
 <div class="w-full h-full">
-  <div class="text-5xl font-bold">Settings</div>
+  <div class="text-7xl">settings</div>
   <div class="divider" />
 </div>
-<div class="flex items-start w-full h-full">
-  <ul class="menu bg-base-100 w-40 rounded-box">
+<div class="flex w-full h-full">
+  <ul class="menu bg-base-100 h-full w-40 rounded-box">
     {#each navigation as navItem}
       <li>
         <a

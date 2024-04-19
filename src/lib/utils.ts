@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { PUBLIC_POCKETBASE_URL } from "$env/static/public";
 
 
@@ -7,14 +8,7 @@ export const getImageURL = (collectionId: unknown, recordId: unknown, fileName: 
 
 
 
-
-
-
-
-
-
-
-export const validateData = async (formData, schema) => {
+export const validateData = async (formData:any, schema:any) => {
 	const body = Object.fromEntries(formData);
 
 	try {
@@ -23,7 +17,7 @@ export const validateData = async (formData, schema) => {
 			formData: data,
 			errors: null
 		};
-	} catch (err) {
+	} catch (err:any) {
 		console.log('Error: ', err);
 		const errors = err.flatten();
 		return {

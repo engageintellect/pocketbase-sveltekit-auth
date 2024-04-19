@@ -1,28 +1,4 @@
-// import { redirect } from '@sveltejs/kit'
 import type { Actions } from './$types'
-
-// export const actions: Actions = {
-//   default: async ({ locals, request }) => {
-//     const data = Object.fromEntries(await request.formData()) as {
-//       email: string
-//       password: string
-//     }
-
-//     try {
-//       await locals.pb
-//         .collection('users')
-//         .authWithPassword(data.email, data.password)
-//     } catch (e) {
-//       console.error(e)
-//       throw e
-//     }
-
-//     redirect(303, '/');
-//   },
-// }
-
-
-
 import { error, fail, redirect } from '@sveltejs/kit';
 import { validateData } from '$lib/utils';
 import { loginUserSchema } from '$lib/schemas';
@@ -40,7 +16,6 @@ export const actions: Actions = {
 
 		try {
 			await locals.pb.collection('users').authWithPassword(formData.email, formData.password);
-			// if (!locals.pb?.authStore?.model?.verified) {
 			if (!locals.pb?.authStore?.model) {
 				locals.pb.authStore.clear();
 				return {

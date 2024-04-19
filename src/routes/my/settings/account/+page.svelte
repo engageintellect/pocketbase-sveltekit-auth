@@ -54,7 +54,7 @@
 <div class="flex flex-col w-full h-full space-y-12">
   <div class="w-full">
     <div class="text-2xl font-medium">Change Email</div>
-    <div class="divider" />
+    <div class="divider mt-2" />
     <Modal label="change-email" checked={emailModalOpen}>
       <span slot="trigger" class="btn btn-primary">Change Email</span>
       <div slot="heading">Change Your Email</div>
@@ -74,14 +74,14 @@
           errors={form?.errors?.email}
         />
         <button type="submit" class="btn btn-primary w-full" disabled={loading}
-          >Change my email</button
+          >Save</button
         >
       </form>
     </Modal>
   </div>
   <div class="w-full">
     <div class="text-2xl font-medium">Change Username</div>
-    <div class="divider mb-0.5" />
+    <div class="divider mt-2" />
     <Input
       id="username"
       label="Username"
@@ -108,7 +108,7 @@
           disabled={loading}
         />
         <button type="submit" class="btn btn-primary w-full" disabled={loading}
-          >Change my username</button
+          >Save</button
         >
       </form>
     </Modal>

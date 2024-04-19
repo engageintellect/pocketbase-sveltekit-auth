@@ -2,11 +2,9 @@
   export let value = ''
   export let placeholder = ''
   export let id: any
-  export let label: any
   export let type = 'text'
   export let disabled = false
   export let required = false
-
   export let errors: any
 </script>
 

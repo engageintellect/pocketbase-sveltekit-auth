@@ -1,20 +1,267 @@
 <script lang="ts">
   import { currentUser } from '$lib/stores/user'
-  import { fade } from 'svelte/transition'
+  import Icon from '@iconify/svelte'
+  import spatzImg from '$lib/assets/images/spatz.png'
 </script>
 
-<div>
-  <div class="py-5" in:fade={{ delay: 0, duration: 500 }}>
-    {#if $currentUser}
-      <h1 class="text-primary font-bold">Secret content</h1>
-      <p>Only logged in users are able to see this message.</p>
+<div class="">
+  {#if !$currentUser}
+    <div class="hero bg-base-100">
+      <div class="hero-content text-center">
+        <div class="max-w-sm">
+          <h1 class="text-9xl font-extrabold text-primary drop-shadow-lg">
+            spatz
+          </h1>
+          <p class="py-5">
+            The best way to start your next <a
+              href="https://kit.svelte.dev"
+              class="text-primary underline">Sveltekit</a
+            >
+            project, if you care about building
+            <span class="text-primary italic">fast</span>...
+          </p>
+          <div class="max-w-md flex gap-2">
+            <a href="/register" class="btn btn-primary flex-1">let's build</a>
+            <a href="/login" class="btn btn-primary btn-outline flex-1">login</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
 
-      <a href="/my/settings/profile">profile</a>
-    {:else}
-      <h1>Welcome to SvelteKit</h1>
+    <div class="mockup-browser border border-base-300 shadow-xl mt-5">
+      <div class="mockup-browser-toolbar">
+        <div class="bg-base-300 px-2 py-1 w-full card">
+          <div class="flex items-center gap-1">
+            <Icon icon="mdi-search" class="w-5 h-5" />
+
+            engage-spatz.vercel.app
+          </div>
+        </div>
+      </div>
+      <div
+        class="flex overflow-auto justify-center items-center border-t border-base-300 bg-primary"
+      >
+        <Icon icon="teenyicons-svelte-solid" class="w-52 h-52 text-base-100" />
+        <Icon icon="simple-icons:pocketbase" class="w-52 h-52 text-base-100" />
+        <Icon icon="simple-icons:openai" class="w-52 h-52 text-base-100" />
+        <Icon icon="simple-icons:tailwindcss" class="w-52 h-52 text-base-100" />
+        <Icon icon="simple-icons:zod" class="w-52 h-52 text-base-100" />
+        <!-- <img -->
+        <!-- src={spatzImg} -->
+        <!-- alt="avatar" -->
+        <!-- class="w-full object-cover h-72 drop-shadow-lg" -->
+        <!-- /> -->
+      </div>
+    </div>
+  {:else}
+    <div class="flex flex-col gap-5">
+      <div>
+        <h1 class="text-7xl">
+          <div class="tracking-tight text-primary font-extrabold">
+            spatz
+            <span class="font-thin text-neutral-content">stack</span>
+          </div>
+        </h1>
+        <p>
+          Visit <a class="text-primary underline" href="https://kit.svelte.dev"
+            >kit.svelte.dev</a
+          > to read the documentation
+        </p>
+      </div>
+
+      <div>
+        <h1 class="text-3xl">About</h1>
+        <p>
+          <strong>Let's face it</strong>, we all like to built
+          <span class="text-primary uppercase italic">fast</span>, and there are
+          some things we need 90% of time, which are a hassle to set up over and
+          over again.
+        </p>
+        <ul class="list-disc pl-10">
+          <li>User Authentication</li>
+        </ul>
+        <ul class="list-disc pl-10">
+          <li>Databases & Content Management</li>
+        </ul>
+        <ul class="list-disc pl-10">
+          <li>Themes & Styling</li>
+        </ul>
+        <ul class="list-disc pl-10">
+          <li>Form Validation</li>
+        </ul>
+      </div>
       <p>
-        Visit <a href="https://kit.svelte.dev">kit.svelte.dev</a> to read the documentation
+        <span class="text-primary font-extrabold">spatz</span> is ready OTB to help
+        you build your next great idea.
       </p>
-    {/if}
-  </div>
+      <div>
+        <h1 class="text-3xl">Technologies</h1>
+        <div class="overflow-x-auto">
+          <table class="table">
+            <!-- head -->
+            <tbody>
+              <!-- row 1 -->
+              <tr>
+                <td
+                  ><a
+                    class="text-primary underline"
+                    href="https://kit.svelte.dev">Sveltekit</a
+                  ></td
+                >
+                <td>JS Client & Server Framework</td>
+              </tr>
+              <!-- row 2 -->
+              <tr>
+                <td
+                  ><a
+                    class="text-primary underline"
+                    href="https://pocketbase.io">Pocketbase</a
+                  ></td
+                >
+                <td>Self-contained Database and User Auth</td>
+              </tr>
+              <!-- row 3 -->
+              <tr>
+                <td
+                  ><a class="text-primary underline" href="https://openai.com"
+                    >OpenAI</a
+                  ></td
+                >
+
+                <td>Streaming Vercel AI API</td>
+              </tr>
+
+              <!-- row 4 -->
+              <tr>
+                <td
+                  ><a
+                    class="text-primary underline"
+                    href="https://tailwindcss.com">TailwindCSS</a
+                  ></td
+                >
+
+                <td
+                  >CSS styling with <a
+                    href="https://daisyui.com"
+                    class="text-primary underline">DaisyUI</a
+                  ></td
+                >
+              </tr>
+              <!-- row 5 -->
+              <tr>
+                <td
+                  ><a class="text-primary underline" href="https://zod.dev"
+                    >Zod</a
+                  ></td
+                >
+
+                <td>Tax Accountant</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- <div>
+          <h1 class="text-3xl">Technologies</h1>
+          <ul class="list-disc pl-[2rem]">
+            <li>
+              <a href="https://kit.svelte.dev" class="underline text-primary"
+                >Sveltekit</a
+              >
+            </li>
+
+            <li>
+              <a href="https://pocketbase.io" class="underline text-primary"
+                >Pocktbase</a
+              >
+            </li>
+
+            <li>
+              <a href="https://openai.com" class="underline text-primary"
+                >OpenAI</a
+              >
+            </li>
+
+            <li>
+              <a href="https//tailwindcss.com" class="underline text-primary"
+                >TailwindCSS</a
+              >
+            </li>
+
+            <li>
+              <a href="https://daisyui.com" class="underline text-primary"
+                >DaisyUI</a
+              >
+            </li>
+
+            <li>
+              <a href="https://zod.dev/" class="underline text-primary">Zod</a>
+            </li>
+          </ul>
+        </div> -->
+
+      <div>
+        <h1 class="text-3xl mb-5">Getting Started</h1>
+        <h1 class="text-xl">Sveltekit Config</h1>
+        <p>Run the below commands to get started.</p>
+
+        <div class="mockup-code">
+          <pre data-prefix="$"><code
+              >git clone https://github.com/engageintellect/pocketbase-sveltekit-auth</code
+            ></pre>
+          <pre data-prefix="$"><code>cd pocketbase-sveltekit-auth</code></pre>
+          <pre data-prefix="$"><code
+              >touch 'PUBLIC_POCKETBASE_URL=http://localhost:8090' > .env.local</code
+            ></pre>
+          <pre data-prefix="$"><code>pnpm i && pnpm run dev</code></pre>
+        </div>
+      </div>
+
+      <div>
+        <h1 class="text-xl">Pocketbase Config</h1>
+        <p>Run the below commands to get started.</p>
+
+        <div class="mockup-code">
+          <pre data-prefix="$"><code
+              >wget https://github.com/pocketbase/pocketbase/releases/download/v0.22.9/pocketbase_0.22.9_linux_amd64.zip</code
+            ></pre>
+          <pre data-prefix="$"><code
+              >unzip pocketbase_0.22.9_linux_amd64.zip</code
+            ></pre>
+          <pre data-prefix="$"><code
+              >./pocketbase serve --http="0.0.0.0:8090"</code
+            ></pre>
+        </div>
+      </div>
+
+      <div class="mb-10">
+        <h1 class="text-3xl">Contribute</h1>
+        <p>Come help make this template even better, sent a PR to:</p>
+
+        <a
+          href="https://github.com/engageintellect/pocketbase-sveltekit-auth"
+          class="btn btn-primary my-2"
+        >
+          <div class="flex items-center gap-2">
+            Github
+
+            <Icon icon="mdi-github" class="w-7 h-7" />
+          </div>
+        </a>
+
+        <a
+          href="https://github.com/new?template_name=pocketbase-sveltekit-auth&template_owner=engageintellect"
+          class="btn my-2"
+        >
+          <div class="flex items-center gap-2">
+            Use Template
+
+            <Icon icon="mdi-github" class="w-7 h-7" />
+          </div>
+        </a>
+      </div>
+    </div>
+  {/if}
 </div>
