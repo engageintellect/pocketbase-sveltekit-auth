@@ -18,6 +18,7 @@
         type="password"
         required
         errors={form?.errors?.oldPassword}
+        placeholder="Current Password"
       />
       <Input
         id="password"
@@ -25,6 +26,7 @@
         type="password"
         required
         errors={form?.errors?.password}
+        placeholder="New Password"
       />
       <Input
         id="passwordConfirm"
@@ -32,6 +34,7 @@
         type="password"
         required
         errors={form?.errors?.passwordConfirm}
+        placeholder="Confirm Password"
       />
       <a
         href="/reset-password"

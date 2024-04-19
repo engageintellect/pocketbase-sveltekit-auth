@@ -107,6 +107,7 @@
       value={form?.data?.name ?? data?.user?.name}
       disabled={loading}
       errors={form?.errors?.name}
+      placeholder="Name"
     />
 
     <Input
@@ -115,6 +116,7 @@
       value={form?.data?.job_title ?? data?.user?.job_title}
       disabled={loading}
       errors={form?.errors?.job_title}
+      placeholder="Title"
     />
 
     <div class="w-full max-w-lg pt-3">
