@@ -5,7 +5,7 @@
 </script>
 
 <div class="">
-  {#if $currentUser}
+  {#if !$currentUser}
     <div class="hero bg-base-100">
       <div class="hero-content text-center">
         <div class="max-w-sm">
