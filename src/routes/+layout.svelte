@@ -116,20 +116,19 @@
             </li>
             <li><a href="/my/settings/account">Account</a></li>
             <li><a href="/my/settings/security">Settings</a></li>
-            <li>
-              <form
-                method="POST"
-                action="/logout"
-                use:enhance={() => {
-                  return async ({ result }) => {
-                    pb.authStore.clear()
-                    await applyAction(result)
-                  }
-                }}
-              >
-                <button>Log out</button>
-              </form>
-            </li>
+            <form
+              class="w-full flex mt-5"
+              method="POST"
+              action="/logout"
+              use:enhance={() => {
+                return async ({ result }) => {
+                  pb.authStore.clear()
+                  await applyAction(result)
+                }
+              }}
+            >
+              <button class="btn btn-primary btn-sm w-full">Log out</button>
+            </form>
           </ul>
         </div>
       {:else}
