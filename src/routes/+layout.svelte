@@ -142,6 +142,6 @@
   </div>
 </div>
 
-<div class="max-w-xl mx-auto p-6">
+<div class="max-w-xl mx-auto p-2">
   <slot />
 </div>

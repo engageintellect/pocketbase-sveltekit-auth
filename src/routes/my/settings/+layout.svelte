@@ -17,16 +17,16 @@
 </script>
 
 <div class="w-full h-full">
-  <div class="text-6xl font-bold">Settings</div>
+  <div class="text-5xl font-bold">Settings</div>
   <div class="divider" />
 </div>
-<div class="flex w-full h-full space-x-4">
-  <ul class="menu bg-base-100 w-56 p-2 rounded-box">
+<div class="flex items-start w-full h-full">
+  <ul class="menu bg-base-100 w-40 rounded-box">
     {#each navigation as navItem}
       <li>
         <a
           href={navItem.href}
-          class="font-medium {$page.url.pathname === navItem.href
+          class="text-lg font-medium {$page.url.pathname === navItem.href
             ? 'active hover:bg-neutral'
             : ''}">{navItem.title}</a
         >
