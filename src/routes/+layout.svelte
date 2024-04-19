@@ -78,7 +78,7 @@
           </div>
         </div>
 
-        <div class="dropdown dropdown-end text-base-content">
+        <div class="dropdown dropdown-end text-base-content -z-[-1]">
           <div
             tabindex="0"
             role="button"

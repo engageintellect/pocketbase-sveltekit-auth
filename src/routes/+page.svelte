@@ -13,6 +13,8 @@
     {#if $currentUser}
       <h1 class="text-primary font-bold">Secret content</h1>
       <p>Only logged in users are able to see this message.</p>
+
+      <a href="/my/settings/profile">profile</a>
     {/if}
   </div>
 </div>
