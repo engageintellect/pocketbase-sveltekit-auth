@@ -51,17 +51,17 @@
             icon="simple-icons:pocketbase"
             class="w-52 h-52 text-base-300"
           />
-          <Icon icon="simple-icons:openai" class="w-52 h-52 text-base-300" />
+          <Icon icon="simple-icons:vercel" class="w-52 h-52 text-base-300" />
           <Icon
             icon="simple-icons:tailwindcss"
             class="w-52 h-52 text-base-300"
           />
           <Icon icon="simple-icons:zod" class="w-52 h-52 text-base-300" />
-          <!-- <img -->
-          <!-- src={spatzImg} -->
-          <!-- alt="avatar" -->
-          <!-- class="w-full object-cover h-72 drop-shadow-lg" -->
-          <!-- /> -->
+          <!-- <img
+            src={spatzImg}
+            alt="avatar"
+            class="w-full object-cover h-72 drop-shadow-lg"
+          /> -->
         </div>
       </div>
     </div>
@@ -69,36 +69,36 @@
     <div class="flex flex-col gap-5">
       <div>
         <h1 class="text-7xl">
-          <div class="tracking-tight text-primary font-extrabold">
-            spatz
-            <span class="font-thin text-neutral-content">stack</span>
+          <div
+            class="tracking-tight text-primary font-extrabold flex items-center"
+          >
+            <div>spatz</div>
+            <div class="font-thin text-neutral-content tracking-tighter">
+              stack
+            </div>
           </div>
         </h1>
         <p>
-          Visit <a class="text-primary underline" href="https://kit.svelte.dev"
-            >kit.svelte.dev</a
+          Visit <a
+            class="text-primary underline"
+            href="https://github.com/engageintellect/pocketbase-sveltekit-auth/tree/main/docs"
+            >docs</a
           > to read the documentation
         </p>
       </div>
 
-      <div>
+      <div class="mt-5">
         <h1 class="text-3xl">About</h1>
         <p>
-          <strong>Let's face it</strong>, we all like to built
+          <strong>Let's face it</strong>, we'd all like to build
           <span class="text-primary uppercase italic">fast</span>, and there are
-          some things we need 90% of time, which are a hassle to set up over and
-          over again.
+          some things we need to implement 90% of time which are a hassle to set
+          up over and over again.
         </p>
-        <ul class="list-disc pl-10">
+        <ul class="list-disc pl-10 pt-2">
           <li>User Authentication</li>
-        </ul>
-        <ul class="list-disc pl-10">
           <li>Databases & Content Management</li>
-        </ul>
-        <ul class="list-disc pl-10">
           <li>Themes & Styling</li>
-        </ul>
-        <ul class="list-disc pl-10">
           <li>Form Validation</li>
         </ul>
       </div>
@@ -120,27 +120,33 @@
                     href="https://kit.svelte.dev">Sveltekit</a
                   ></td
                 >
-                <td>JS Client & Server Framework</td>
-              </tr>
-              <!-- row 2 -->
-              <tr>
+                <td>
+                  Futuristic web framework for building blazing fast web apps.
+                </td>
+                <!-- row 2 -->
+              </tr><tr>
                 <td
                   ><a
                     class="text-primary underline"
                     href="https://pocketbase.io">Pocketbase</a
                   ></td
                 >
-                <td>Self-contained Database and User Auth</td>
+                <td>Self-contained Database and User Auth.</td>
               </tr>
               <!-- row 3 -->
               <tr>
                 <td
                   ><a class="text-primary underline" href="https://openai.com"
-                    >OpenAI</a
+                    >AI</a
                   ></td
                 >
 
-                <td>Streaming Vercel AI API</td>
+                <td
+                  ><a
+                    href="https://sdk.vercel.ai/docs/guides/frameworks/sveltekit"
+                    class="text-primary underline">Vercel AI SDK</a
+                  > with streaming API.</td
+                >
               </tr>
 
               <!-- row 4 -->
@@ -153,10 +159,10 @@
                 >
 
                 <td
-                  >CSS styling with <a
+                  >Utility-first CSS styling with <a
                     href="https://daisyui.com"
                     class="text-primary underline">DaisyUI</a
-                  ></td
+                  >.</td
                 >
               </tr>
               <!-- row 5 -->
@@ -167,51 +173,14 @@
                   ></td
                 >
 
-                <td>Tax Accountant</td>
+                <td
+                  >TypeScript-first schema validation with static type inference
+                </td>
               </tr>
             </tbody>
           </table>
         </div>
       </div>
-
-      <!-- <div>
-          <h1 class="text-3xl">Technologies</h1>
-          <ul class="list-disc pl-[2rem]">
-            <li>
-              <a href="https://kit.svelte.dev" class="underline text-primary"
-                >Sveltekit</a
-              >
-            </li>
-
-            <li>
-              <a href="https://pocketbase.io" class="underline text-primary"
-                >Pocktbase</a
-              >
-            </li>
-
-            <li>
-              <a href="https://openai.com" class="underline text-primary"
-                >OpenAI</a
-              >
-            </li>
-
-            <li>
-              <a href="https//tailwindcss.com" class="underline text-primary"
-                >TailwindCSS</a
-              >
-            </li>
-
-            <li>
-              <a href="https://daisyui.com" class="underline text-primary"
-                >DaisyUI</a
-              >
-            </li>
-
-            <li>
-              <a href="https://zod.dev/" class="underline text-primary">Zod</a>
-            </li>
-          </ul>
-        </div> -->
 
       <div>
         <h1 class="text-3xl mb-5">Getting Started</h1>

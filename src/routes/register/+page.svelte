@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { enhance } from '$app/forms'
+  import { applyAction, enhance } from '$app/forms'
   import Input from '$lib/components/Input.svelte'
   export let form
   let loading = false
@@ -10,6 +10,16 @@
   action="?/register"
   method="POST"
   class="card sm:max-w-md sm:mt-10 mx-auto"
+  use:enhance={() => {
+    return async ({ result }) => {
+      if (result.type === 'redirect') {
+        loading = true
+        await applyAction(result)
+      } else {
+        await applyAction(result)
+      }
+    }
+  }}
 >
   <div class="mb-5">
     <h1 class="text-7xl">register</h1>
@@ -53,6 +63,12 @@
       >
     </div>
 
-    <button disabled={loading} class="btn btn-primary">Register</button>
+    <button class="btn btn-primary">
+      {#if loading}
+        <span class="loading loading-spinner loading-md"></span>
+      {:else}
+        register
+      {/if}
+    </button>
   </div>
 </form>

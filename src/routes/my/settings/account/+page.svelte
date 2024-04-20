@@ -55,6 +55,14 @@
   <div class="w-full">
     <div class="text-2xl font-medium">Change Email</div>
     <div class="divider mt-2" />
+
+    <Input
+      id="email"
+      value={data?.user?.email}
+      disabled={true}
+      errors={form?.errors?.email}
+    />
+
     <Modal label="change-email" checked={emailModalOpen}>
       <span slot="trigger" class="btn btn-primary">Change Email</span>
       <div slot="heading">Change Your Email</div>
@@ -67,7 +75,6 @@
         <Input
           id="email"
           type="email"
-          label="Enter your new email address"
           required={true}
           value={form?.data?.email}
           disabled={loading}
@@ -84,7 +91,6 @@
     <div class="divider mt-2" />
     <Input
       id="username"
-      label="Username"
       value={data?.user?.username}
       disabled={true}
       errors={form?.errors?.username}
@@ -101,7 +107,6 @@
         <Input
           id="username"
           type="text"
-          label="Enter your new username"
           required={true}
           value={form?.data?.username}
           errors={form?.errors?.username}

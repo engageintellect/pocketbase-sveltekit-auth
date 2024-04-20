@@ -53,16 +53,23 @@
     <div class="text-2xl font-medium">Update Profile</div>
     <div class="divider" />
     <div class="form-control w-full max-w-lg">
-      <label for="avatar" class="label font-medium pb-1">
-        <span class="label-text">Profile Picture</span>
-      </label>
-      <label for="avatar" class="avatar w-32 rounded-full hover:cursor-pointer">
+      <!-- <label for="avatar" class="label font-medium pb-1"> -->
+      <!-- <span class="label-text">Profile Picture</span> -->
+      <!-- </label> -->
+      <label
+        for="avatar"
+        class="avatar w-32 rounded-full hover:cursor-pointer mb-5"
+      >
         <label
           for="avatar"
-          class="absolute -bottom-0.5 -right-0.5 hover:cursor-pointer"
+          class="absolute -bottom-0.5 -right-0.5 hover:cursor-pointer z-20"
         >
           <span class="btn btn-circle btn-sm btn-secondary">
-            <Icon icon="gridicons-pencil" class="h-6 w-6" />
+            {#if data.user?.avatar}
+              <Icon icon="mdi-pencil" class="h-6 w-6" />
+            {:else}
+              <Icon icon="mdi-plus" class="h-6 w-6" />
+            {/if}
           </span>
         </label>
         <div class="w-32 rounded-full border border-primary">
@@ -74,15 +81,18 @@
                     data.user?.id,
                     data.user?.avatar,
                   )
-                : `https://ui-avatars.com/api/?name=${data.user?.name}`}
-              alt="user avatar"
-              id="avatar-preview"
+                : `https://ui-avatars.com/api/?name=${data.user?.email}`}
+              alt="User avatar"
             />
           {:else}
-            <img
-              alt="Tailwind CSS Navbar component"
-              src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+            <Icon
+              icon="mdi-account-circle"
+              class="h-full scale-110 w-full rounded-full text-base-100 bg-primary"
             />
+            <!-- <img
+                    alt="Tailwind CSS Navbar component"
+                    src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
+                  /> -->
           {/if}
         </div>
       </label>
@@ -108,7 +118,6 @@
     </div>
     <Input
       id="name"
-      label="Name"
       value={form?.data?.name ?? data?.user?.name}
       disabled={loading}
       errors={form?.errors?.name}
@@ -117,7 +126,6 @@
 
     <Input
       id="job_title"
-      label="Job Title"
       value={form?.data?.job_title ?? data?.user?.job_title}
       disabled={loading}
       errors={form?.errors?.job_title}

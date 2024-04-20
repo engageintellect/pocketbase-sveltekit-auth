@@ -39,56 +39,51 @@
         <a href="/" class="btn btn-primary text-xl">spatz</a>
       </div>
       <div class="flex-none gap-2">
-        <!-- <div class="form-control">
-        <input
-          type="text"
-          placeholder="Search"
-          class="input input-bordered w-24 md:w-auto"
-        />
-      </div> -->
-
         {#if $currentUser}
-          <div class="">
-            <div class="dropdown dropdown-end">
-              <div tabindex="0" role="button">
-                <div
-                  class="lg:tooltip lg:tooltip-left"
-                  data-tip="Theme Selector"
-                >
-                  <button class="btn btn-ghost">
-                    <div class="font-normal lowercase">
-                      <Icon icon="gridicons-themes" class="h-6 w-6" />
-                    </div>
-                  </button>
-                </div>
+          <div class="dropdown dropdown-end">
+            <div tabindex="0" role="button">
+              <div class="lg:tooltip lg:tooltip-left" data-tip="Theme Selector">
+                <button class="btn btn-ghost">
+                  <div class="font-normal lowercase">
+                    <Icon icon="gridicons-themes" class="h-6 w-6" />
+                  </div>
+                </button>
               </div>
-              <ul
-                tabindex="-1"
-                class="dropdown-content dropdown-end rounded-box border-primary bg-base-100 -z-[-1] mt-3 h-96 w-52 overflow-auto border p-2 shadow"
-              >
-                {#each themes.sort() as theme}
-                  <li>
-                    <input
-                      type="radio"
-                      name="theme-dropdown"
-                      class="theme-controller text-base-content btn btn-ghost btn-sm btn-block justify-start font-medium"
-                      aria-label={theme}
-                      value={theme}
-                      on:change={handleThemeChange}
-                    />
-                  </li>
-                {/each}
-              </ul>
             </div>
+            <ul
+              tabindex="-1"
+              class="dropdown-content dropdown-end rounded-box border-primary bg-base-100 z-50 mt-3 h-96 w-52 overflow-auto border p-2 shadow"
+            >
+              <li
+                class="sticky top-0 theme-controller text-primary-content btn btn-primary btn-sm btn-block justify-start font-medium mb-2"
+              >
+                <div class="flex items-center gap-2">
+                  <Icon icon="mdi-done" class="w-5 h-5" />
+                  {$selectedTheme}
+                </div>
+              </li>
+              {#each themes.sort() as theme}
+                <li>
+                  <input
+                    type="radio"
+                    name="theme-dropdown"
+                    class="theme-controller text-base-content btn btn-ghost btn-sm btn-block justify-start font-medium"
+                    aria-label={theme}
+                    value={theme}
+                    on:change={handleThemeChange}
+                  />
+                </li>
+              {/each}
+            </ul>
           </div>
 
-          <div class="dropdown dropdown-end text-base-content -z-[-1]">
+          <div class="dropdown dropdown-end">
             <div
               tabindex="0"
               role="button"
-              class="btn btn-primary btn-circle avatar flex items-center"
+              class="btn btn-primary btn-circle avatar flex items-center justify-center"
             >
-              <div class="w-12 rounded-full">
+              <div class="h-full w-full rounded-full">
                 {#if $currentUser?.avatar}
                   <img
                     src={$currentUser?.avatar
@@ -101,28 +96,43 @@
                     alt="User avatar"
                   />
                 {:else}
-                  <img
+                  <Icon
+                    icon="mdi-account-circle"
+                    class="h-full w-full scale-[110%] transition-scale duration-200 md:hover:scale-[105%] rounded-full text-base-100 "
+                  />
+                  <!-- <img
                     alt="Tailwind CSS Navbar component"
                     src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg"
-                  />
+                  /> -->
                 {/if}
               </div>
             </div>
+
             <ul
               tabindex="-1"
-              class="mt-3 -z-[-1] p-2 shadow menu menu-sm border border-primary dropdown-content bg-base-100 rounded-box w-52"
+              class="dropdown-content menu p-2 shadow bg-base-100 rounded-box w-52 border border-primary mt-3 z-50"
             >
-              <li>
-                <a class="font-bold mb-2" href="/">{$currentUser.email}</a>
+              <li class="mb-5">
+                <div
+                  class="bg-primary hover:bg-primary text-primary-content w-full truncate"
+                >
+                  <a href="/my/settings/profile" class="truncate"
+                    >{$currentUser?.email}</a
+                  >
+                </div>
               </li>
+
               <li>
-                <a href="/my/settings/profile" class="justify-between">
-                  Profile
-                  <span class="badge badge-accent">New</span>
+                <a href="/my/settings/profile">
+                  <div class="flex gap-2">
+                    <div>Profile</div>
+                    <div class="badge badge-accent">new</div>
+                  </div>
                 </a>
               </li>
               <li><a href="/my/settings/account">Account</a></li>
               <li><a href="/my/settings/security">Settings</a></li>
+
               <form
                 class="w-full flex mt-5"
                 method="POST"
@@ -134,7 +144,13 @@
                   }
                 }}
               >
-                <button class="btn btn-primary btn-sm w-full">Log out</button>
+                <button class="btn btn-primary btn-sm w-full">
+                  <div class="flex w-full items-center justify-between">
+                    <div>logout</div>
+
+                    <Icon icon="mdi-logout" class="w-5 h-5" />
+                  </div>
+                </button>
               </form>
             </ul>
           </div>

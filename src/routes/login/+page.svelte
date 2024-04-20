@@ -1,12 +1,28 @@
 <script lang="ts">
-  import { enhance } from '$app/forms'
+  import { applyAction, enhance } from '$app/forms'
+  import { goto } from '$app/navigation'
   import Input from '$lib/components/Input.svelte'
+  import { redirect } from '@sveltejs/kit'
   export let form
   let loading = false
   import { fade } from 'svelte/transition'
 </script>
 
-<form action="?/login" method="POST" class="card sm:max-w-md sm:mt-10 mx-auto">
+<form
+  action="?/login"
+  method="POST"
+  class="card max-w-md mt-10 mx-auto"
+  use:enhance={() => {
+    return async ({ result }) => {
+      if (result.type === 'redirect') {
+        loading = true
+        await applyAction(result)
+      } else {
+        await applyAction(result)
+      }
+    }
+  }}
+>
   <div class="mb-5">
     <h1 class="text-7xl">login</h1>
     <p class="pt-2">
@@ -40,6 +56,12 @@
       >
     </div>
 
-    <button disabled={loading} class="btn btn-primary">Login</button>
+    <button class="btn btn-primary">
+      {#if loading}
+        <span class="loading loading-spinner loading-md"></span>
+      {:else}
+        login
+      {/if}
+    </button>
   </div>
 </form>

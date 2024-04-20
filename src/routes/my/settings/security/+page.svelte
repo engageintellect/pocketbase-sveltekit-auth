@@ -14,7 +14,6 @@
       <div class="divider" />
       <Input
         id="oldPassword"
-        label="Old Password"
         type="password"
         required
         errors={form?.errors?.oldPassword}
@@ -22,7 +21,6 @@
       />
       <Input
         id="password"
-        label="New Password"
         type="password"
         required
         errors={form?.errors?.password}
@@ -30,7 +28,6 @@
       />
       <Input
         id="passwordConfirm"
-        label="Confirm New Password"
         type="password"
         required
         errors={form?.errors?.passwordConfirm}
