@@ -123,13 +123,14 @@
               </li>
 
               <li>
-                <a href="/my/settings/profile">
+                <a href="/ai/chat">
                   <div class="flex gap-2">
-                    <div>Profile</div>
+                    <div>AI</div>
                     <div class="badge badge-accent">new</div>
                   </div>
                 </a>
               </li>
+              <li><a href="/my/settings/profile">Profile</a></li>
               <li><a href="/my/settings/account">Account</a></li>
               <li><a href="/my/settings/security">Settings</a></li>
 
